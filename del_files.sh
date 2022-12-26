@@ -5,22 +5,16 @@
 ##################################################################
 set -e -o pipefail
 
-# 定数の定義
-readonly LOG_DIR="/var/www/BA/share/admin/storage"
-
 # 引数チェック
 if [ $# -ne 1 ]; then
   echo "The parameter of command del_logfile.sh is invalid."
-  echo "Usage: sh del_logfile.sh logs_dirname(ex.api_logs)"
+  echo "Usage: sh del_logfile.sh logs_dirname(ex./hoge/logs)"
   exit 1
 fi
 
-# ログディレクトリの設定
-_log_dir="${LOG_DIR}"/"$1"
-
 # ディレクトリチェック
-if [ ! -d ${_log_dir} ]; then
-  echo ${_log_dir}" dose not exist."
+if [ ! -d $1 ]; then
+  echo $1" dose not exist."
   echo "Usage: sh del_logfile.sh logs_dirname(ex.api_logs)"
   exit 1
 fi
@@ -73,7 +67,7 @@ trap finally EXIT
 
 echo "`date +'%Y-%m-%d %H:%M:%S:%3N'` started."
 
-ls -ltr ${_log_dir} | awk -v log_dir=${_log_dir} '
+ls -ltr $1 | awk -v log_dir=$1 '
 BEGIN {
   print "target log_dir=" log_dir;
   dsize=0;
