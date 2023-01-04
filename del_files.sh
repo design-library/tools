@@ -73,14 +73,14 @@ BEGIN {
   dsize=0;
 }
 NR != 1 { 
-  if ( (total += $5) < 1000000000 ) {
+  if ( (total += $5) < 2000000000 ) {
     "rm "log_dir"/"$9"; echo $? | cut -c 1" | getline status;
     if ( status == 0 ) {
       print "Line=" NR-1 ":OK:delete_file=" log_dir "/" $9 ":size="$5;
     } else {
-      #exit 1;
-      print "Line=" NR-1 ":NG:target_file=" log_dir "/" $9 ":size="$5;
-      total -= $5;
+      exit 1;
+      #print "Line=" NR-1 ":NG:target_file=" log_dir "/" $9 ":size="$5;
+      #total -= $5;
     }
     dsize = total;
   }
