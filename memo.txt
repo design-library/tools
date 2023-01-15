@@ -1,17 +1,34 @@
 command memo.
 
+[[dummy file]]
 dd if=/dev/zero of=/var/www/BA/share/admin/storage/api_logs/api-log-20221220.log bs=1M count=540
-dd if=/dev/zero of=/var/www/BA/share/admin/storage/api_logs/api-log-20221221.log bs=1M count=50
-dd if=/dev/zero of=/var/www/BA/share/admin/storage/api_logs/api-log-20221222.log bs=1M count=2
+dd if=/dev/zero of=/var/www/BA/share/admin/storage/api_logs/api-log-20221221.log bs=1M count=580
+dd if=/dev/zero of=/var/www/BA/share/admin/storage/api_logs/api-log-20221222.log bs=1M count=390
 dd if=/dev/zero of=/var/www/BA/share/admin/storage/api_logs/api-log-20221223.log bs=1M count=680
 dd if=/dev/zero of=/var/www/BA/share/admin/storage/api_logs/api-log-20221224.log bs=1M count=100
 
+[[dummy file update]]
 touch -d "2022-12-20 11:56" /var/www/BA/share/admin/storage/api_logs/api-log-20221220.log
 touch -d "2022-12-21 00:06" /var/www/BA/share/admin/storage/api_logs/api-log-20221221.log
 touch -d "2022-12-22 10:03" /var/www/BA/share/admin/storage/api_logs/api-log-20221222.log
 touch -d "2022-12-23 20:30" /var/www/BA/share/admin/storage/api_logs/api-log-20221223.log
 touch -d "2022-12-24 21:34" /var/www/BA/share/admin/storage/api_logs/api-log-20221224.log
 
+[[shell command]]
+sh del_files.sh /var/www/BA/share/admin/storage/api_logs/ 2022/12/31
+
+※killコマンド実行時に他プロセスに影響がないことを確認する
+1.ターミナル１
+　　PIDを特定
+　　top
+2.ターミナル２
+　　リソースの状態を観察
+　　vmstat -t 1 | tee /home/net.shinya/vmstat.log
+3.ターミナル３
+　　シェル実行（sleepコマンドで実行を停止）
+4.ターミナル４
+　　kill -KILL [PID]
+
+
 
 chattr -i /var/www/BA/share/admin/storage/api_logs/api-log-20221221.log
-
