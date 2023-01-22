@@ -94,3 +94,41 @@ nice -n 19 sh del_files.sh /var/www/BA/share/admin/storage/api_logs 2022/01/31
 chattr -i /var/www/BA/share/admin/storage/api_logs/api-log-20221221.log
 
 
+[root@sakura net.shinya]# nice -n 19 sh del_files.sh /var/www/BA/share/admin/storage/api_logs 2022/01/31
+引数の確認をしてください。処理を進めてよろしいですか？  (y/n) :y
+2023-01-22 13:07:37:185 started.
+target log_dir=/var/www/BA/share/admin/storage/api_logs
+limit date is 2022/01/31
+Line=1:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220101.log:size=262144000
+Line=2:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220102.log:size=262144000
+Line=3:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220103.log:size=262144000
+Line=4:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220104.log:size=262144000
+Line=5:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220105.log:size=262144000
+Line=6:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220106.log:size=262144000
+Line=7:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220107.log:size=262144000
+delete size=1835008000
+2023-01-22 13:07:37 wait a second...
+Line=8:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220108.log:size=262144000
+Line=9:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220109.log:size=262144000
+Line=10:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220110.log:size=262144000
+Line=11:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220111.log:size=262144000
+Line=12:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220112.log:size=262144000
+Line=13:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220113.log:size=262144000
+Line=14:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220114.log:size=262144000
+delete size=1835008000
+2023-01-22 13:08:37 wait a second...
+Line=15:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220115.log:size=262144000
+Line=16:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220116.log:size=262144000
+Line=17:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220117.log:size=262144000
+Line=18:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220118.log:size=262144000
+Line=19:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220119.log:size=262144000
+Line=20:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220120.log:size=262144000
+Line=21:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220121.log:size=262144000
+delete size=1835008000
+2023-01-22 13:09:37 wait a second...
+Line=22:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220122.log:size=262144000
+Line=23:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220123.log:size=262144000
+Line=24:OK:delete_file=/var/www/BA/share/admin/storage/api_logs/api-log-20220124.log:size=262144000
+delete size=786432000
+2023-01-22 13:10:37:505 finished.
+
