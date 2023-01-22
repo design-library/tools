@@ -86,23 +86,55 @@ trap finally EXIT
 echo "`date +'%Y-%m-%d %H:%M:%S:%3N'` started."
 
 ls -ltr --time-style="+%Y/%m/%d %H:%M:%S" $1 | awk -v log_dir=$1 -v lmt_date=$2 '
+
+##################################################################
+# 削除処理関数
+# Arguments:
+#   ファイル名, ファイルサイズ
+# Returns:
+#   None
+##################################################################
+function del(dir, size) {
+  "rm "log_dir"/"$8"; echo $? | cut -c 1" | getline status;
+  if ( status == 0 ) {
+    print "Line=" NR-1 ":OK:delete_file=" log_dir "/" $8 ":size="$5;
+  } else {
+    exit 1;
+  }
+  return 0;
+}
+
+##################################################################
+# 標準出力関数
+# Arguments:
+#   削除ファイルサイズ
+# Returns:
+#   None
+##################################################################
+function println(dsize) {
+  print "delete size=" dsize; 
+  print strftime("%Y-%m-%d %H:%M:%S") " wait a second..."
+  return 0;
+}
+
 BEGIN {
   print "target log_dir=" log_dir;
   print "limit date is " lmt_date;
   dsize=0;
+  total=0;
 }
 NR != 1 { 
   if (lmt_date < $6) {
     exit 0;
   } else {
     if ( (total += $5) < 2000000000 ) {
-      "rm "log_dir"/"$8"; echo $? | cut -c 1" | getline status;
-      if ( status == 0 ) {
-        print "Line=" NR-1 ":OK:delete_file=" log_dir "/" $8 ":size="$5;
-      } else {
-        exit 1;
-      }
+      del($8,$5);
       dsize = total;
+    } else {
+      println(dsize);
+      system("sleep 60s;");
+      del($8,$5);
+      total = $5;
     }
   }
 } 
